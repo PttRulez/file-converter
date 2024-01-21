@@ -49,6 +49,6 @@
     "posttest": "npm run lint"
   },
   "engines": {
-    "node": "^20.3.0"
+    "node": ">=20.3.0"
   }
 }
