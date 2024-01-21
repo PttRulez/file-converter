@@ -32,13 +32,13 @@ export const CONVERTED_FOLDER = path.join(
 );
 
 if (!fs.existsSync(INPUT_FOLDER)) {
-  fs.mkdirSync(INPUT_FOLDER);
+  fs.mkdirSync(INPUT_FOLDER, {recursive: true});
 }
 
 if (!fs.existsSync(UPLOAD_FOLDER)) {
-  fs.mkdirSync(UPLOAD_FOLDER);
+  fs.mkdirSync(UPLOAD_FOLDER, {recursive: true});
 }
 
 if (!fs.existsSync(CONVERTED_FOLDER)) {
-  fs.mkdirSync(CONVERTED_FOLDER);
+  fs.mkdirSync(CONVERTED_FOLDER, {recursive: true});
 }
