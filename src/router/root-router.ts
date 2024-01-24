@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/', (req, res, next) => {
   console.log('lol');
-  res.status(200).send('Zdarova pediki');
+  res.status(200).send('Приветствую вас');
 });
 
 router.get(
