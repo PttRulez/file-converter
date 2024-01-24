@@ -17,7 +17,7 @@ jobs:
           port: 22
           script: |
             cd /var/www/pttrulez-subdomains/file-converter
-            git status
+            git pull
             npm install
             npm run compile
             pm2 restart file-converter

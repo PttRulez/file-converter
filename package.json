@@ -37,16 +37,15 @@
     "typescript": "~5.2.0"
   },
   "scripts": {
-    "start": "ts-node src/index.ts",
-    "cli": "ts-node src/cli/cli.ts",
-    "nodemon": "nodemon src/index.ts",
-    "compile": "tsc",
     "clean": "gts clean",
+    "compile": "npx tsc",
+    "cli": "ts-node src/cli/cli.ts",
     "fix": "gts fix",
     "lint": "gts lint",
-    "prepare": "npm run compile",
+    "nodemon": "nodemon src/index.ts",
     "pretest": "npm run compile",
-    "posttest": "npm run lint"
+    "posttest": "npm run lint",
+    "start": "ts-node src/index.ts"
   },
   "engines": {
     "node": ">=20.3.0"
