@@ -3,10 +3,12 @@ run-name: ${{ github.actor }} is learning GitHub Actions
 on:
   push:
     branches: ['main']
+  pull_request:
+    branches: ['main']
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: file-converter-runner
     steps:
       - name: Deploy using ssh
         uses: appleboy/ssh-action@master
