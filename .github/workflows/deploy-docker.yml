@@ -42,7 +42,11 @@ jobs:
           ssh-keyscan -H ${{ secrets.HOST }} > ~/.ssh/known_hosts
       - name: connect
         run: |
-          ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd ${{ secrets.DOCKER_COMPOSE_FODLER }}
-          && echo ${{ secrets.PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin && docker compose pull && docker compose up -d && exit"
+          ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd ${{ secrets.DOCKER_COMPOSE_FODLER }} &&
+          echo ${{ secrets.PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin &&
+          docker compose up -d && exit"
+      - name: pull
+        run: docker compose pull
+
       - name: cleanup
         run: rm -rf ~/.ssh
