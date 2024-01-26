@@ -1,5 +1,5 @@
 name: deploy-using-container
-run-name: ${{ github.actor }} is pulling container from github regisrty
+run-name: ${{ github.actor }} is deploying using docker
 
 on:
   push:
@@ -41,4 +41,4 @@ jobs:
         run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd ${{ secrets.DOCKER_COMPOSE_FODLER }} && docker compose pull && docker compose up -d && exit"
       - name: cleanup
         run: rm -rf ~/.ssh
-# registry_container_token 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
+# registry_container_token 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
