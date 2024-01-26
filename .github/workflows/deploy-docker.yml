@@ -45,8 +45,5 @@ jobs:
           ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd ${{ secrets.DOCKER_COMPOSE_FODLER }} &&
           echo ${{ secrets.PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin &&
           docker compose up -d && exit"
-      - name: pull
-        run: docker compose pull
-
       - name: cleanup
         run: rm -rf ~/.ssh
