@@ -41,4 +41,3 @@ jobs:
         run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd ${{ secrets.DOCKER_COMPOSE_FODLER }} && docker compose pull && docker compose up -d && exit"
       - name: cleanup
         run: rm -rf ~/.ssh
-# registry_container_token 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
