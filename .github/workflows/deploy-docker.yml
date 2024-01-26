@@ -21,6 +21,12 @@ jobs:
       - name: Login to registry
         run: |
           echo ${{ secrets.PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: downcase REPO
+        run: |
+          echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
+      - name: use REPO
+        run: |
+          echo "The value of REPO is: ${REPO}"
       - name: Build and Publish
         run: |
           docker build . --tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
