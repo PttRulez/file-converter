@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Login to registry
         run: |
           echo ${{ secrets.PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
@@ -43,7 +43,7 @@ jobs:
       - name: connect
         run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd ${{ secrets.DOCKER_COMPOSE_FODLER }}"
       - name: docker compose pull
-        run: docker compose pull
+        run: pwd && docker compose pull
       - name: docker compose up
         run: docker compose up -d && exit
       - name: cleanup
