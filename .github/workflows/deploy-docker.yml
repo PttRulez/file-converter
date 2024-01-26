@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
       - name: Login to registry
         run: |
           echo ${{ secrets.PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
@@ -41,10 +41,8 @@ jobs:
           echo "${{ secrets.SSH_TIMEWEB_SWEATCLUB_ID_RSA_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.HOST }} > ~/.ssh/known_hosts
       - name: connect
-        run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd ${{ secrets.DOCKER_COMPOSE_FODLER }}"
-      - name: docker compose pull
-        run: pwd && docker compose pull
-      - name: docker compose up
-        run: docker compose up -d && exit
+        run: |
+          ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} "cd ${{ secrets.DOCKER_COMPOSE_FODLER }}
+          && echo ${{ secrets.PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin && docker compose pull && docker compose up -d && exit"
       - name: cleanup
         run: rm -rf ~/.ssh
