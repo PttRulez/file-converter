@@ -1,0 +1,7 @@
+# Копия лежит на серваке. Здесь для копипасты
+services:
+  converter:
+    container_name: converter
+    image: ghcr.io/pttrulez/file-converter-docker-image
+    ports:
+      - 3000:3000
